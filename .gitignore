@@ -1,0 +1,49 @@
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+.mypy_cache/
+.ruff_cache/
+
+# ── Testing ───────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ── Env & secrets ─────────────────────────────────────────────
+.env
+*.env.local
+
+# ── Data (raw + interim are reproducible; processed is derived) ─
+data/raw/
+data/interim/
+data/processed/
+# Keep the sample generator but not generated CSVs
+data/samples/*.csv
+
+# ── Logs ──────────────────────────────────────────────────────
+artifacts/logs/*.log
+artifacts/logs/*.log.*
+
+# ── Reports ───────────────────────────────────────────────────
+reports/quality_report.*
+reports/dashboard.html
+reports/figures/
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/

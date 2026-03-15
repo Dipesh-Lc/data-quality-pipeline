@@ -1,0 +1,51 @@
+[build-system]
+requires      = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name        = "data-quality-pipeline"
+version     = "1.0.0"
+description = "ETL pipeline with automated data quality monitoring and anomaly detection"
+readme      = "README.md"
+requires-python = ">=3.11"
+license     = { text = "MIT" }
+
+dependencies = [
+    # Data
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "openpyxl>=3.1",          # Excel support
+    # Database
+    "sqlalchemy>=2.0",
+    "psycopg2-binary>=2.9",
+    # HTTP / API
+    "requests>=2.31",
+    # Config & logging
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    # Reporting
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ipykernel>=6.0",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+]
+
+[project.scripts]
+run-pipeline = "src.pipelines.run_pipeline:run_pipeline"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+# ── Pytest ───────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths    = ["tests"]
+addopts      = "-v --tb=short --cov=src --cov-report=term-missing"
+log_cli      = true
+log_cli_level = "WARNING"

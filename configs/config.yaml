@@ -1,0 +1,88 @@
+#  Pipeline configuration
+#----------------------------------------------------------
+project:
+  name: data-quality-pipeline
+  version: "1.0.0"
+  timezone: UTC
+
+# Paths 
+paths:
+  raw:       data/raw
+  interim:   data/interim
+  processed: data/processed
+  samples:   data/samples
+  logs:      artifacts/logs
+  reports:   reports
+
+# Source files 
+sources:
+  transactions:
+    filename:    transactions.csv
+    date_format: "%Y-%m-%d %H:%M:%S"
+  customers:
+    filename:    customers.csv
+    date_format: "%Y-%m-%d"
+
+# Expected schemas 
+schemas:
+  transactions:
+    required_columns:
+      - InvoiceNo
+      - StockCode
+      - Quantity
+      - InvoiceDate
+      - UnitPrice
+      - Country
+    optional_columns:
+      - CustomerID
+      - Description
+      - Status
+      - PaymentMethod
+    dtypes:
+      Quantity:  int
+      UnitPrice: float
+  customers:
+    required_columns:
+      - CustomerID
+      - Country
+    optional_columns:
+      - SignupDate
+      - Segment
+      - IsActive
+
+# Business rules 
+rules:
+  transactions:
+    unit_price_min:     0.0
+    quantity_max:       1000
+    quantity_min:       -500
+    max_future_days:    0          # no future-dated invoices
+  customers:
+    max_customer_tenure_days: 3650  # 10 years
+
+# Anomaly detection 
+anomaly:
+  daily_volume:
+    z_score_threshold:  3.0
+    rolling_window:     7          # days
+  transaction_amount:
+    z_score_threshold:  4.0
+  null_rate_threshold:  0.05       # flag if > 5 % nulls in any critical column
+
+# Holidays API 
+holidays_api:
+  base_url:  "https://date.nager.at/api/v3"
+  countries:
+    - GB
+    - DE
+    - FR
+    - US
+  year:       2025
+  timeout_s:  10
+
+# Database 
+database:
+  schema:         public
+  staging_prefix: stg_
+  dq_table:       dq_results
+  batch_size:     5000

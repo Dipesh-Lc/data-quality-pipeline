@@ -1,0 +1,23 @@
+# Core data processing
+pandas>=2.2
+numpy>=1.26
+scipy>=1.12
+
+# Database
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+
+# HTTP / API
+requests>=2.31
+
+# Config & environment
+pyyaml>=6.0
+python-dotenv>=1.0
+
+# Reporting / visualisation
+matplotlib>=3.8
+seaborn>=0.13
+jinja2>=3.1
+
+# Dev / test
+pytest>=8.0
