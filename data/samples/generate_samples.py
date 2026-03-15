@@ -49,8 +49,8 @@ def _random_invoice() -> str:
 
 def generate_transactions(n: int = 5_000) -> pd.DataFrame:
     """Generate sample transactions."""
-    start = datetime(2023, 1, 1)
-    end   = datetime(2023, 12, 31)
+    start = datetime(2025, 1, 1)
+    end   = datetime(2025, 12, 31)
 
     records = []
     customer_pool = [f"C{str(i).zfill(5)}" for i in range(12000, 18200)]
