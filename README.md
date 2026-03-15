@@ -270,7 +270,7 @@ python -m unittest discover -s tests -p "test_*.py"    # quiet mode (no verbose 
 
 ![Dashboard Overview](docs/images/dashboard_overview.png)
 
-The dashboard [`reports/dashboard.html`](reports/dashboard.html) is a fully self-contained single-file page with four tabs:
+The dashboard [`dashboard.html`](https://Dipesh-Lc.github.io/data-quality-pipeline/dashboard.html) is a fully self-contained single-file page with four tabs:
 
 - **Overview** -- KPI cards (total transactions, revenue, unique customers, cancellation rate, rejected rows, etc.) plus three key charts
 - **Charts** -- all 10 generated figures
