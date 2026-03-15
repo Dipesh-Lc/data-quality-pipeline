@@ -49,7 +49,7 @@ Raw Sources
                               reports/dashboard.html
 ```
 
-Full component details → [`docs/architecture.md`](docs/architecture.md)
+Full component details -> [`docs/architecture.md`](docs/architecture.md)
 
 ---
 
@@ -79,7 +79,7 @@ python reports/build_dashboard.py    # assembles dashboard.html from live data
 
 ## Datasets
 
-### Primary — UCI Online Retail II (simulated)
+### Primary: UCI Online Retail II (simulated)
 
 `data/samples/generate_samples.py` generates realistic CSV data with intentional quality issues injected:
 
@@ -89,7 +89,7 @@ python reports/build_dashboard.py    # assembles dashboard.html from live data
 - ~2% customers with inconsistent `Country` casing
 - ~1% customers with null `SignupDate`
 
-### Enrichment — Nager.Date Public Holidays API
+### Enrichment: Nager.Date Public Holidays API
 
 ```
 GET https://date.nager.at/api/v3/PublicHolidays/{year}/{countryCode}
@@ -270,7 +270,7 @@ python -m unittest discover -s tests -p "test_*.py"    # quiet mode (no verbose 
 
 ![Dashboard Overview](docs/images/dashboard_overview.png)
 
-The dashboard (`reports/dashboard.html`) is a fully self-contained single-file page with four tabs:
+The dashboard [`reports/dashboard.html`](reports/dashboard.html) is a fully self-contained single-file page with four tabs:
 
 - **Overview** -- KPI cards (total transactions, revenue, unique customers, cancellation rate, rejected rows, etc.) plus three key charts
 - **Charts** -- all 10 generated figures

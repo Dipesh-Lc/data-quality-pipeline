@@ -97,8 +97,8 @@ Thin SQLAlchemy wrapper. `db.py` owns the engine and connection helpers. `load.p
 ### `src/monitoring/`
 Two distinct monitoring concepts:
 
-- **Quality checks** (`quality_checks.py`) — rule-based, deterministic. Run after load. Ask "is something *wrong*?"
-- **Anomaly detection** (`anomaly_detection.py`) — statistical, probabilistic. Ask "is something *unusual*?"
+- **Quality checks** (`quality_checks.py`):  rule-based, deterministic. Run after load. Ask "is something *wrong*?"
+- **Anomaly detection** (`anomaly_detection.py`): statistical, probabilistic. Ask "is something *unusual*?"
 
 This distinction matters: a null in a required column is always wrong; an unusually high transaction volume might be a flash sale, not an error.
 
@@ -126,7 +126,7 @@ data/
 
 ## Design Decisions
 
-**Why LEFT JOIN for transactions → customers?**
+**Why LEFT JOIN for transactions -> customers?**
 Guest checkouts (no customer ID) are valid transactions and must not be silently dropped. They are flagged with `is_known_customer = False` for downstream filtering.
 
 **Why quarantine rejected rows rather than drop them?**
